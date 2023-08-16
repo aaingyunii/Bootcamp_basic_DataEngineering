@@ -24,9 +24,9 @@
 - ### VScode 개발 편집기 사용
     - `Terminal` 창에서 `PS (Power shell)` 이 아닌  `CMD` 창으로 열어서<br>
     `virtualenv` 의 `/Scripts/activate` 접근 가능.
- 
-    - `Terminal` 창의 default profile 을 선택해 `CMD` 를 기본 창으로 변경 가능
-    - `F1 > python interpreter` 선택을 통해 기본 가상환경을 설정할 수 있다.
+    
+        - `Terminal` 창의 default profile 을 선택해 `CMD` 를 기본 창으로 변경 가능
+        - `F1 > python interpreter` 선택을 통해 기본 가상환경을 설정할 수 있다.
 
 - ### Django 와 Spring
     - **디자인 패턴** :
@@ -47,7 +47,11 @@
 : chrome 웹 스토어에서 `Talend API Tester` 를 설치하여 API 동작을 확인
 
 
-<br><br>
+<br>
+
+---
+
+### ➕➕➕
 
 ### 🧩 네트워크 포트  확인
 - `CMD` 창에서 `netstat -nao` 를 통해 로컬 주소와 포트넘버를 확인하고 'PID' 도 확인 가능하여 무엇이 사용 중인지 확인 가능하다.
