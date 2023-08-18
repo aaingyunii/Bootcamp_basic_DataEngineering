@@ -21,12 +21,27 @@
 
 - ### 데이터베이스 MySQL 사용.
 
-- ### VScode 개발 편집기 사용
-    - `Terminal` 창에서 `PS (Power shell)` 이 아닌  `CMD` 창으로 열어서<br>
+## VScode 개발 편집기 사용
+- `Terminal` 창에서 `PS (Power shell)` 이 아닌  `CMD` 창으로 열어서<br>
     `virtualenv` 의 `/Scripts/activate` 접근 가능.
     
-        - `Terminal` 창의 default profile 을 선택해 `CMD` 를 기본 창으로 변경 가능
-        - `F1 > python interpreter` 선택을 통해 기본 가상환경을 설정할 수 있다.
+    - `Terminal` 창의 default profile 을 선택해 `CMD` 를 기본 창으로 변경 가능
+    - `F1 > python interpreter` 선택을 통해 기본 가상환경을 설정할 수 있다.
+
+<br>
+
+- VScode 내에서 Spring boot 실행을 위한 `Extensions` 설치
+
+    - spring boot tools
+    
+    - Spring Initializr Java Support 
+    
+    - Spring Boot Dashboard 
+    
+    - lombok 
+    
+    - Maven for java
+
 
 - ### Django 와 Spring
     - **디자인 패턴** :
