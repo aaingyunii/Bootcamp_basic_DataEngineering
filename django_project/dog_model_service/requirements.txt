@@ -1,0 +1,11 @@
+bs4
+djangorestframework
+lxml
+mysqlclient
+pandas
+pip-chill
+requests
+sklearn
+opencv-python
+Pillow
+tensorflow
