@@ -1,7 +1,6 @@
 package com.encore.stock.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.encore.stock.Service.StockService;
+import com.encore.stock.data.dto.ResponseDto;
 import com.encore.stock.data.dto.StockDto;
-import com.encore.stock.data.entity.Stock;
 
 import java.util.List;
 
@@ -35,14 +34,17 @@ public class StockController {
         }
     }
 
-    @PostMapping("/stock/")
-    public ResponseEntity<List<StockDto>> postShow(@RequestBody String code){
-        List<StockDto> stockDtos = stockService.getStockByStockCode(code);
+    @PostMapping("/stockdate")
+    public ResponseEntity<List<StockDto>> postShow(@RequestBody ResponseDto postData){
+        List<StockDto> stockDtos = stockService.getStockByStockCodeRange(
+            postData.getCode(),postData.getFrom_to(),postData.getEnd_to());
 
-        if (stockDtos.isEmpty()){
+        if(stockDtos.isEmpty()){
             return ResponseEntity.notFound().build();
         }else{
             return ResponseEntity.ok(stockDtos);
         }
     }
+
+    
 }

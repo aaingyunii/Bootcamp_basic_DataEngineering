@@ -26,6 +26,12 @@ public class StockServiceImpl implements StockService {
         return stocks.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
+    @Override
+    public List<StockDto> getStockByStockCodeRange(String code, String from_to, String end_to){
+        List<Stock> stocks = stockRepository.queryByStockCodeAndDateAndDate(code, from_to, end_to);
+        return stocks.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
     private StockDto convertToDTO(Stock stock){
         StockDto dto = new StockDto();
         dto.setStockCode(stock.getStockCode());
@@ -38,5 +44,6 @@ public class StockServiceImpl implements StockService {
         dto.setForeignExchangeRate(stock.getForeignExchangeRate());
         return dto;
     }
+
 
 }
