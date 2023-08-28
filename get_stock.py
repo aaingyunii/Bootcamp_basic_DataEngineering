@@ -12,17 +12,17 @@ dag = DAG(
     schedule_interval="0 18 * * *",
     start_date=datetime.datetime(year=2023, month=8, day=23)
 )
-
+os.chdir("/root")
 
 def _get_stock_day():
     sise_url = "https://api.finance.naver.com/siseJson.naver?symbol={}&requestType=1&startTime={}&endTime={}&timeframe=day"
     with open("./master.pkl", "rb") as f:
         master = pickle.load(f)
     
-    if os.path.isdir("~/stock")  == False:
-        os.mkdir("~/stock")
+    if os.path.isdir("./stock")  == False:
+        os.mkdir("./stock")
     today =  str(datetime.date.today()).replace("-", "")
-    with open('~/stock/{}.csv'.format(today), 'w', encoding='utf-8-sig', newline='') as csvfile:
+    with open('./stock/{}.csv'.format(today), 'w', encoding='utf-8-sig', newline='') as csvfile:
         writer = csv.writer(csvfile)
         for code in master[:20]:
             r2 = requests.post(sise_url.format(code, today, today))
@@ -33,10 +33,10 @@ def _get_stock_day():
                 writer.writerow([f'{code}'] + x)
 
 
-PythonOperator(
-    task_id = "naver_get_day",
-    python_callable = _get_stock_day,
-    dag=dag
+get_stock_day = PythonOperator(
+    task_id = "get_stock_day",
+    python_callable=_get_stock_day,
+    dag=dag,
 )
 
 def _store_db():
@@ -56,10 +56,10 @@ def _store_db():
                 print(e)
     con.commit()
 
-PythonOperator(
+store_db = PythonOperator(
     task_id = "store_db",
-    python_callable = "_store_db",
-    dag=dag
+    python_callable=_store_db,
+    dag=dag,
 )
 
-naver_get_day >> store_db
+get_stock_day >> store_db
