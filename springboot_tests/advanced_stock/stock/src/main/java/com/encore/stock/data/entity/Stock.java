@@ -2,7 +2,10 @@ package com.encore.stock.data.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +15,11 @@ import lombok.ToString;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @ToString
+@Getter
+
 public class Stock {
     @Id
-    @Column
     private Long numb;
 
     @Column(name = "Stock_code")
@@ -42,8 +45,5 @@ public class Stock {
 
     @Column(name = "Foreign_ex_rate")
     private Float foreignExchangeRate;
-    
-    public Stock toEntity(){
-        return new Stock(numb, stockCode, date, open, high, low, close, volume, foreignExchangeRate);
-    }
+
 }
