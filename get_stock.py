@@ -42,7 +42,7 @@ get_stock_day = PythonOperator(
 def _store_db():
     
     try:
-        con = pymysql.connect(host='127.0.0.1', user='root', password='password',  db='encore', charset='utf8')
+        con = pymysql.connect(host='127.0.0.1', user='root', password='8489',  db='encore', charset='utf8')
         cur = con.cursor()
     except Exception as e:
         print (e)
